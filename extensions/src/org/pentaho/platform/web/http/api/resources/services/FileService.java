@@ -795,7 +795,10 @@ public class FileService {
    * @return Boolean representing whether or not user can create files
    */
   public String doGetCanCreate() {
-    return getPolicy().isAllowed( RepositoryCreateAction.NAME ) ? "true" : "false"; //$NON-NLS-1$//$NON-NLS-2$
+        return getPolicy().isAllowed(RepositoryCreateAction.NAME)
+                || getPolicy()
+                        .isAllowed(
+                                "org.pentaho.platform.dataaccess.datasource.security.manage") ? "true" : "false"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   /**

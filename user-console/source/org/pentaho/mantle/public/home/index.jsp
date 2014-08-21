@@ -99,6 +99,10 @@
       var serviceUrl = Home.getUrlBase() + "plugin/data-access/api/permissions/hasDataAccess";
       Home.getContent(serviceUrl, function (result) {
         ContextProvider.addProperty("hasDataAccess", result);
+        if (result) {
+          // create content can be for data access also
+          ContextProvider.addProperty("canCreateContent", result);
+        }
         ContextProvider.get(Home.init, contextConfig); // initialize
       }, function (error) {
         console.log(error);
